@@ -22,7 +22,7 @@
     "tape-watch": "^2.3.0"
   },
   "scripts": {
-    "test": "tape 'test/**/*.js' | tap-diff",
+    "test": "tape 'test/**/*.test.js' | tap-diff",
     "start": "node ./lib/bin"
   },
   "dependencies": {
