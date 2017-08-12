@@ -1,7 +1,31 @@
 {
   "name": "sales-taxes",
   "version": "1.0.0",
+  "description": "sales taxes exercise in javascript",
+  "author": {
+    "name": "Scott Chu",
+    "email": "scott@yroo.com",
+    "url": "yroo.com"
+  },
+  "license": "MIT",
   "main": "index.js",
-  "author": "Scott Chu",
-  "license": "MIT"
+  "bin": {
+    "sales-taxes": "./lib/bin.js"
+  },
+  "directories": {
+    "example": "example",
+    "test": "test"
+  },
+  "devDependencies": {
+    "tap-diff": "^0.1.1",
+    "tape": "^4.8.0",
+    "tape-watch": "^2.3.0"
+  },
+  "scripts": {
+    "test": "tape 'test/**/*.js' | tap-diff",
+    "start": "node ./lib/bin"
+  },
+  "dependencies": {
+    "minimist": "^1.2.0"
+  }
 }
