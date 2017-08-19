@@ -8,7 +8,7 @@ Write an application that prints out the receipt details for these shopping bask
 
 ## INPUT:
 
-###Input 1:
+### Input 1:
 - 1 book at 12.49
 - 1 music CD at 14.99
 - 1 chocolate bar at 0.85
