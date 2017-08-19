@@ -1,0 +1,13 @@
+{
+  "taxRate": 0.1,
+  "dutyRate": 0.05,
+  "roundToNearest": 0.05,
+  "exempted": [
+    "pill",
+    "chocolate",
+    "milk"
+  ],
+  "imported": [
+    "imported"
+  ]
+}

@@ -1,14 +1,18 @@
-const FileReader = require("./FileReader")
+const loader = require("./Loader")
+const parser = require("./Parser")
+const calculator = require("./Calculator")
+const format = require("./Format")
+const printer = require("./Printer")
 
-function App(filePaths = []) {
-  try {
-    filePaths
-      .map(FileReader.create())
-      .map((lines) => console.log(lines))
+const { map, pipe } = require("./common")
 
-  } catch(e) {
-    console.error("Something went wrong,", e)
-  }
-}
+const App = map(pipe([
+  loader,
+  parser,
+  calculator,
+  format,
+  printer
+]))
+
 
 module.exports = App
