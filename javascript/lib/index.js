@@ -1,18 +1,15 @@
-const loader = require("./Loader")
-const parser = require("./Parser")
-const calculator = require("./Calculator")
-const format = require("./Format")
-const printer = require("./Printer")
+const loader = require("./loader")
+const parser = require("./parser")
+const calculator = require("./calculator")
+const format = require("./format")
+const printer = require("./printer")
 
 const { map, pipe } = require("./common")
 
-const App = map(pipe([
+module.exports = map(pipe([
   loader,
   parser,
   calculator,
   format,
   printer
 ]))
-
-
-module.exports = App
