@@ -1,16 +1,18 @@
 #!/usr/bin/env node
 
+const { get, map, pipe, slice } = require("./common")
 const { resolve } = require("path")
 
 const parser = require("minimist")
 
-const App = require(".")
+const app = require(".")
 
-const resolvePath = (cwd) => (path) => resolve(cwd, path)
+const absolutePath = cwd => path => resolve(cwd, path)
 
-const opts = parser(process.argv.slice(2))
-
-const filePaths = opts._
-  .map(resolvePath(process.cwd()))
-
-App(filePaths)
+pipe([
+  slice(2),
+  parser,
+  get("_"),
+  map(absolutePath(process.cwd())),
+  app
+])(process.argv)

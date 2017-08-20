@@ -20,6 +20,7 @@ module.exports = {
   multiply: require("./multiply"),
   not: require("./not"),
   pipe: require("./pipe"),
+  proxy: require("./proxy"),
   reduce: require("./reduce"),
   round: require("./round"),
   slice: require("./slice"),
