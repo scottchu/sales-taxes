@@ -1,27 +1,20 @@
-const is = require("./is")
+const concat = require("./concat")
 const get = require("./get")
+const is = require("./is")
 
-const size = get("length")
+const length = get("length")
 
-const curry = (fn, stored = []) => {
-  const length = size(fn)
-  if (length === 0)
+const curry = (fn, arity = length(fn), prev = []) => {
+  if (arity === 0)
     return fn
 
   return (...args) => {
-    if (size(stored) + size(args) < length)
-      return curry(fn, [...stored, ...args])
+    const next = concat(prev, args)
 
-    return fn(...stored)
-  }
-}
+    if (length(next) < arity)
+      return curry(fn, arity, next)
 
-curry.fnArg = fn => {
-  return value => {
-    if (is.function(value))
-      return (...args) => fn(value(...args))
-
-    return fn(value)
+    return fn(...next)
   }
 }
 
