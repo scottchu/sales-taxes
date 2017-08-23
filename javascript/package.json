@@ -23,7 +23,7 @@
   },
   "scripts": {
     "test": "tape 'test/**/*.test.js' | tap-diff",
-    "start": "node ./lib/bin"
+    "start": "node ./lib/bin ../inputs/input-1 ../inputs/input-2 ../inputs/input-3"
   },
   "dependencies": {
     "minimist": "^1.2.0"
