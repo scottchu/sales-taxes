@@ -17,9 +17,11 @@ const roundToNearest1Cents = compose([
   round.up(0.001)
 ])
 
+const sum = reduce(add)
+
 const calculatItemsTotal = compose([
   roundToNearest1Cents,
-  reduce(add),
+  sum,
   map(get("total"))
 ])
 
@@ -30,7 +32,7 @@ const formatItemsTotal = reduce.by(concatString)([
 
 const calculateSalesTaxes = compose([
   roundToNearest1Cents,
-  reduce(add),
+  sum,
   map(get("tax"))
 ])
 
