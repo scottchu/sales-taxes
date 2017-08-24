@@ -1,3 +1,5 @@
+const curry = require("./curry")
+
 const append = (list, item) => [...list, item]
 
-module.exports = append
+module.exports = curry(append)

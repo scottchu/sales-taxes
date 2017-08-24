@@ -1,18 +1,9 @@
 #!/usr/bin/env node
 
-const { get, map, pipe, slice } = require("./common")
-const { resolve } = require("path")
+const args = require("./args")
+const app = require("./index")
 
-const parser = require("minimist")
+const { argv, cwd } = process
 
-const app = require(".")
+app(args(cwd())(argv))
 
-const absolutePath = cwd => path => resolve(cwd, path)
-
-pipe([
-  slice(2),
-  parser,
-  get("_"),
-  map(absolutePath(process.cwd())),
-  app
-])(process.argv)
