@@ -1,8 +1,6 @@
-const { add, compose, get, multiply, times, reduce, round } = require("../common")
+const { add, compose, get, times, reduce, round } = require("../common")
 
 const tax = require("./tax")
-
-const roundToNearest1Cents = round.up(0.001)
 
 const totalPerUnit = reduce.by(add)([
   get("price"),
@@ -15,7 +13,7 @@ const calcTotal = reduce.by(times)([
 ])
 
 const total = compose([
-  roundToNearest1Cents,
+  round.up(0.001),
   calcTotal
 ])
 
