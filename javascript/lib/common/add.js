@@ -1,3 +1,10 @@
-const add = (x, y) => x + y
+const constantize = require("./constantize")
+const curry = require("./curry")
 
-module.exports = add
+const add = (x, y) => {
+  return (...args) => {
+    return constantize(x)(...args) + constantize(y)(...args)
+  }
+}
+
+module.exports = curry(add)

@@ -1,9 +1,3 @@
-const add = require("./add")
-const append = require("./append")
-const concat = require("./concat")
-const merge = require("./merge")
-const times = require("./times")
-
 const reduce = (...args) => list => {
   return list.reduce(...args)
 }

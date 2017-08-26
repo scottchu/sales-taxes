@@ -1,13 +1,15 @@
-const { add, append, compose, constant, either, get, map, round, reduce, toPrecision } = require("../common")
+const { add, append, compose, constant, either, get, map, round, reduce, toPrecision, log } = require("../common")
+
+const { unit, imported, name, tax, total } = require("../item")
 
 const concatString = require("./concatString")
 
 const formatItem = reduce.by(concatString)([
-  get("unit"),
-  compose([either("imported", null), get("imported")]),
-  get("name"),
+  unit,
+  either("imported", null, imported),
+  name,
   constant(":"),
-  get("total")
+  total
 ])
 
 const formatItems = map(formatItem)
@@ -22,7 +24,7 @@ const sum = reduce(add)
 const calculatItemsTotal = compose([
   roundToNearest1Cents,
   sum,
-  map(get("total"))
+  map(total)
 ])
 
 const formatItemsTotal = reduce.by(concatString)([
@@ -33,7 +35,7 @@ const formatItemsTotal = reduce.by(concatString)([
 const calculateSalesTaxes = compose([
   roundToNearest1Cents,
   sum,
-  map(get("tax"))
+  map(tax)
 ])
 
 const formatSalesTaxes = reduce.by(concatString)([

@@ -1,5 +1,7 @@
-const apply = fn => args => fn.apply(null, args)
+const curry = require("./curry")
 
-apply.to = args => fn => apply(fn)(args)
+const apply = curry((fn, args) => fn.apply(null, args))
+
+apply.with = curry((args, fn) => apply(fn, args))
 
 module.exports = apply

@@ -1,4 +1,4 @@
-const { constant, compose, empty, filter, join, not, take } = require("../common")
+const { compose, empty, filter, join, not, take } = require("../common")
 
 const concatString = compose([
   join(" "),

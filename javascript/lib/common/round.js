@@ -1,6 +1,11 @@
+const constantize = require("./constantize")
+const unwrap = require("./unwrap")
+
 const round = fn => {
   return (factor, decimal = 2) => {
-    return value => parseFloat((fn(value / factor) * factor).toFixed(decimal))
+    return value => {
+      return parseFloat((fn(unwrap(value) / factor) * factor).toFixed(decimal))
+    }
   }
 }
 
