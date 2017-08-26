@@ -6,4 +6,3 @@ const app = require("./index")
 const { argv, cwd } = process
 
 app(args(cwd())(argv))
-
