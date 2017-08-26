@@ -1,3 +1,11 @@
-const multiply = x => y => x * y
+const constantize = require("./constantize")
+const curry = require("./curry")
+const is = require("./is")
 
-module.exports = multiply
+const multiply = (x, y) => {
+  return (...args) => {
+    return constantize(x)(...args) * constantize(y)(...args)
+  }
+}
+
+module.exports = curry(multiply)

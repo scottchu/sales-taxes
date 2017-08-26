@@ -1,8 +1,16 @@
-const either = (lhs, rhs) => cond => {
-  if (typeof cond === "function")
-    return item => either(lhs, rhs)(cond(item))
+const and = require("./and")
+const constantize = require("./constantize")
+const curry = require("./curry")
+const or = require("./or")
 
-  return cond && lhs || rhs
+const either = (lhs, rhs, cond) => {
+  return or(
+    and(
+      constantize(cond),
+      constantize(lhs)
+    ),
+    constantize(rhs)
+  )
 }
 
-module.exports = either
+module.exports = curry(either)

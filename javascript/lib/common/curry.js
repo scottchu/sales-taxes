@@ -1,6 +1,5 @@
 const concat = require("./concat")
 const get = require("./get")
-const is = require("./is")
 
 const length = get("length")
 
